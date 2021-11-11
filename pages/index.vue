@@ -1,6 +1,6 @@
 <template>
   <section class="movie-search">
-    <h1 class="movie-search__heading">WTMR</h1>
+    <h1 class="movie-search__heading">WTMW</h1>
     <Search @search-title="findMovies" />
     <div v-if="moviesArray && moviesArray.length > 0" class="movies">
       <MovieCard
