@@ -1,0 +1,23 @@
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+}
+
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+    transition: all 0.3s cubic-bezier(0.45, 0.25, 0.6, 0.95);
+}
+
+input {
+    font-size: 16px;
+}
+
+.fade-transform-enter-to,
+.fade-transform-leave-from {
+    opacity: 1;
+}
+
+.fade-transform-enter-from,
+.fade-transform-leave-to {
+    opacity: 0.2;
+}

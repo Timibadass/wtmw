@@ -8,6 +8,11 @@
         :key="movie.imdbID"
         :movie="movie"
       />
+      <Pagination
+        :pages="totalPages"
+        :current="page"
+        @page-change="fetchMovieFromPage"
+      />
     </div>
     <p v-else-if="movies && movies.Error">{{ movies.Error }}</p>
   </section>
@@ -58,43 +63,56 @@ export default {
   data() {
     return {
       isFiltered: false,
+      page: null,
+      currentTitle: '',
     }
   },
   computed: {
-    ...mapGetters(['movies']),
+    ...mapGetters(['movies', 'totalPages']),
     moviesArray() {
       if (this.isFiltered) {
         return this.movies
       } else return this.moviesInfo
     },
   },
+  created() {
+    this.page = 1
+  },
   methods: {
     ...mapActions(['fetchMovie', 'searchForMovie']),
     async findMovies(val) {
       if (val) {
+        this.currentTitle = val
         try {
-          await this.searchForMovie(val)
+          await this.searchForMovie({ title: val })
           this.isFiltered = true
-        } catch (error) {}
+        } catch (error) {
+          return error
+        }
       } else {
         this.isFiltered = false
+      }
+    },
+    async fetchMovieFromPage(page) {
+      try {
+        await this.searchForMovie({ title: this.currentTitle, page })
+        this.page = page
+        this.isFiltered = true
+      } catch (error) {
+        this.isFiltered = false
+        return error
       }
     },
   },
 }
 </script>
 <style lang="scss" scoped>
-* {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 400;
-}
-
 .movie-search {
   padding: 30px;
   box-sizing: border-box;
   &__heading {
     font-family: 'Source Sans Pro', sans-serif;
-    text-align: center;
+    text-align: left;
     font-weight: 700;
   }
 }
@@ -104,10 +122,10 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 16px;
   @media (min-width: 768px) {
-    gap: 20px;
-    max-width: 1300px;
-    margin: auto;
+    gap: 24px;
+    justify-content: flex-start;
   }
 }
 </style>

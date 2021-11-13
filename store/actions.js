@@ -8,16 +8,17 @@ const actions = {
             })
             const { data } = response
             commit('SET_MOVIE_INFO', data)
+            commit('SET_TOTAL_PAGES', 1)
             return data
         } catch (error) {
             return error
         }
     },
-    async searchForMovie({ commit, state }, title) {
+    async searchForMovie({ commit, state }, { title, page }) {
         let url = null
         const totalPages = state.totalPages
         if (totalPages) {
-            url = `${apiKey}s=${title}`
+            url = `${apiKey}s=${title}&page=${page}`
         } else {
             url = `${apiKey}s=${title}`
         }
