@@ -39,6 +39,9 @@ export default {
   max-width: 100%;
   margin: 16px 0;
   margin-right: auto;
+  @media (min-width: 768px) {
+    margin: 24px 0;
+  }
   &__form {
     width: 100%;
   }
