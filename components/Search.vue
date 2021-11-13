@@ -36,8 +36,9 @@ export default {
 <style lang="scss" scoped>
 .search {
   width: 100%;
-  max-width: 350px;
-  margin: 30px auto;
+  max-width: 100%;
+  margin: 16px 0;
+  margin-right: auto;
   &__form {
     width: 100%;
   }

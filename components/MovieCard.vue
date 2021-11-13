@@ -14,7 +14,7 @@
         <p class="movie__text">
           <span class="movie__text--bold">Title:</span> {{ movie.Title }}
         </p>
-        <p class="movie__text">
+        <p class="movie__text movie__text--faded">
           <span class="movie__text--bold">Production Year:</span>
           {{ movie.Year }}
         </p>
@@ -48,8 +48,10 @@ export default {
       const fetchImage = (url) => {
         return new Promise((resolve, reject) => {
           const image = new Image()
-          image.src = url
-          image.onload = resolve
+          if (url !== 'N/A') {
+            image.src = url
+            image.onload = resolve
+          }
           image.onerror = reject
         })
       }
@@ -81,13 +83,13 @@ export default {
 <style lang="scss" scoped>
 .movie {
   border-radius: 8px;
-  margin-top: 30px;
-  max-width: 300px;
+  flex-basis: 100%;
+  /* max-width: 350px; */
   width: 100%;
   height: 250px;
-  border: 1px solid #eee;
+  border: 1px solid rgba(238, 238, 238, 0.4);
   &:hover {
-    box-shadow: 1px 3px 4px 1px rgb(227 227 227 / 83%);
+    box-shadow: 4px 4px 20px rgba(249, 249, 249, 0.15);
   }
   &-image {
     &__container {
@@ -95,6 +97,7 @@ export default {
       border-top-right-radius: 8px;
       height: 180px;
       position: relative;
+      overflow: hidden;
     }
     &__overlay {
       position: absolute;
@@ -119,16 +122,32 @@ export default {
     object-fit: cover;
     height: 180px;
     width: 100%;
+    transition: transform 0.3s cubic-bezier(1, 0.08, 0, 0.35);
+    &:hover {
+      transform: scale(1.5);
+    }
   }
   &__text {
+    font-family: 'Source Sans Pro', sans-serif;
     margin-top: 10px;
     font-weight: 300;
     &--bold {
       font-weight: 700;
     }
+    &--faded {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+  @media (min-width: 768px) {
+    flex-grow: 2;
+    flex-basis: 48%;
   }
   @media (min-width: 1024px) {
-    max-width: 350px;
+    max-width: 300px;
+  }
+  @media (min-width: 1280px) {
+    max-width: 395px;
+    flex-basis: 33%;
   }
 }
 </style>

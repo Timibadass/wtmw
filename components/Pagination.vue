@@ -12,16 +12,19 @@
       >
         Prev
       </button>
-      <button
-        v-for="page in pages"
-        v-show="page < 10"
-        :key="page"
-        :disabled="current === page"
-        class="pagination__button pagination__button--small"
-        @click="$emit('page-change', page)"
-      >
-        {{ page }}
-      </button>
+      <div class="pagination-numbers__div">
+        <button
+          v-for="page in pages"
+          v-show="page < 10"
+          :key="page"
+          :ref="'number' + page"
+          :disabled="current === page"
+          class="pagination__button pagination__button--small"
+          @click="$emit('page-change', page)"
+        >
+          {{ page }}
+        </button>
+      </div>
       <button
         class="
           pagination__button
@@ -50,6 +53,13 @@ export default {
       required: true,
     },
   },
+  watch: {
+    current(val) {
+      const refName = 'number' + val
+      const button = this.$refs[refName][0]
+      button.scrollIntoView()
+    },
+  },
 }
 </script>
 
@@ -60,9 +70,20 @@ export default {
   justify-content: center;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
+  margin: 30px 0;
   &__container {
     display: flex;
     gap: 5px;
+  }
+  &-numbers__div {
+    max-width: 180px;
+    display: inline-flex;
+    overflow-x: scroll;
+    gap: 5px;
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent; /* make scrollbar transparent */
+    }
   }
   &__button {
     background: transparent;
@@ -79,6 +100,10 @@ export default {
       cursor: not-allowed;
       background: rgba(238, 238, 238, 0.4);
       color: rgba(255, 255, 255, 0.7);
+    }
+    &:hover {
+      font-size: 18px;
+      height: 45px;
     }
     &--small {
       width: 30px;
