@@ -4,8 +4,8 @@
     <Search @search-title="findMovies" />
     <div v-if="moviesArray && moviesArray.length > 0" class="movies">
       <MovieCard
-        v-for="movie in moviesArray"
-        :key="movie.imdbID"
+        v-for="(movie, index) in moviesArray"
+        :key="movie.imdbID + index"
         :movie="movie"
       />
       <Pagination
