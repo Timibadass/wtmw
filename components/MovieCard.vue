@@ -89,7 +89,7 @@ export default {
   height: 250px;
   border: 1px solid rgba(238, 238, 238, 0.4);
   &:hover {
-    box-shadow: 4px 4px 20px rgba(249, 249, 249, 0.15);
+    box-shadow: 4px 4px 20px rgba(249, 249, 249, 0.1);
   }
   &-image {
     &__container {
