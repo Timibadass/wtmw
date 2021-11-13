@@ -15,6 +15,7 @@
       />
     </div>
     <p v-else-if="movies && movies.Error">{{ movies.Error }}</p>
+    <NuxtChild />
   </section>
 </template>
 
@@ -110,6 +111,7 @@ export default {
 .movie-search {
   padding: 30px;
   box-sizing: border-box;
+  position: relative;
   &__heading {
     font-family: 'Source Sans Pro', sans-serif;
     text-align: left;

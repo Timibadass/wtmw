@@ -1,6 +1,6 @@
 <template>
   <section class="movie">
-    <router-link :to="{ name: 'id', params: { id: movie.imdbID } }">
+    <router-link :to="{ name: 'index-id', params: { id: movie.imdbID } }">
       <div class="movie-image__container">
         <img
           ref="image"
@@ -84,7 +84,7 @@ export default {
 .movie {
   border-radius: 8px;
   flex-basis: 100%;
-  /* max-width: 350px; */
+  /* max-width: 450px; */
   width: 100%;
   height: 250px;
   border: 1px solid rgba(238, 238, 238, 0.4);

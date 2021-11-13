@@ -8730,6 +8730,11 @@ vue-client-only@^2.0.0:
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.1.0.tgz#1a67a47b8ecacfa86d75830173fffee3bf8a4ee3"
   integrity sha512-vKl1skEKn8EK9f8P2ZzhRnuaRHLHrlt1sbRmazlvsx6EiC3A8oWF8YCBrMJzoN+W3OnElwIGbVjsx6/xelY1AA==
 
+vue-dynamic-star-rating@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/vue-dynamic-star-rating/-/vue-dynamic-star-rating-1.0.8.tgz#45da24ea6ce11d5d63dc2410394f06724febd789"
+  integrity sha512-HZUbmot40hrWUYAe6pSUkg2HcGl8DPfiJ0tbsnQ3yokjHNhBYZqDyLLxYX7EJu0S1AYi1vw2tjyCuI1/nWOD/w==
+
 vue-eslint-parser@^7.1.1, vue-eslint-parser@^7.10.0:
   version "7.11.0"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.11.0.tgz#214b5dea961007fcffb2ee65b8912307628d0daf"
