@@ -32,7 +32,7 @@ const actions = {
             commit('SET_MOVIES', movies)
             if (data.Search) {
                 const totalPages = Math.floor(Math.round(data.totalResults / 10))
-                commit('SET_TOTAL_PAGES', totalPages)
+                commit('SET_TOTAL_PAGES', totalPages === 0 ? 1 : totalPages)
             }
             return movies
         } catch (error) {
