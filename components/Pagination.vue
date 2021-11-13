@@ -84,6 +84,9 @@ export default {
       width: 0px;
       background: transparent; /* make scrollbar transparent */
     }
+    @media (min-width: 768px) {
+      max-width: 100%;
+    }
   }
   &__button {
     background: transparent;
