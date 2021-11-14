@@ -101,8 +101,7 @@ export default {
     align-items: center;
     &:disabled {
       cursor: not-allowed;
-      background: rgba(238, 238, 238, 0.1);
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.1);
     }
     &:hover {
       font-size: 18px;
