@@ -30,6 +30,7 @@
         >
           <client-only>
             <star-rating
+              v-if="movie"
               class="movie__rating"
               :rating="formatRating(rating.Value, rating.Source)"
               :star-style="{ starWidth: 30, starHeight: 30 }"
@@ -44,12 +45,8 @@
 </template>
 
 <script>
-import StarRating from 'vue-dynamic-star-rating'
 export default {
   name: 'MovieInfo',
-  components: {
-    StarRating,
-  },
   async asyncData({ params, store, error }) {
     const imdbID = params.id
     try {
