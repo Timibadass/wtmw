@@ -1,6 +1,6 @@
 <template>
   <div class="overlay" @click.self="$router.push('/')">
-    <section class="movie">
+    <section ref="movieDiv" class="movie">
       <button class="back__button" @click="$router.push('/')">Back</button>
       <div class="movie-image__container">
         <img :src="movie.Poster" :alt="movie.Title" class="movie__image" />
@@ -63,6 +63,9 @@ export default {
       error(e)
     }
   },
+  mounted() {
+    this.displayInfo()
+  },
   methods: {
     formatRating(val, source) {
       let rating = null
@@ -78,6 +81,12 @@ export default {
           break
       }
       return rating
+    },
+    displayInfo() {
+      const movieDiv = this.$refs.movieDiv
+      setTimeout(() => {
+        movieDiv.classList.add('movie--active')
+      }, 300)
     },
   },
 }
@@ -114,8 +123,11 @@ export default {
   position: absolute;
   top: 0;
   background: #121010;
-  transition: all 300ms ease-in;
+  transition: all 300ms ease-in-out;
   min-height: 100vh;
+  &--active {
+    transform: translateX(0);
+  }
   &-info__container {
     padding: 0 16px;
     padding-bottom: 30px;
@@ -161,6 +173,10 @@ export default {
   }
   @media (min-width: 768px) {
     width: 500px;
+    transform: translateX(500px);
+    &--active {
+      transform: translateX(0);
+    }
     &-image__container {
       margin: auto;
       margin-top: 50px;
@@ -186,6 +202,7 @@ export default {
   width: 100vw;
   height: 100%;
   overflow-y: scroll;
+  overflow-x: hidden;
   left: 0;
   top: 0;
   background: rgba(0, 0, 0, 0.8);

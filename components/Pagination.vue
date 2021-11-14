@@ -101,12 +101,11 @@ export default {
     align-items: center;
     &:disabled {
       cursor: not-allowed;
-      background: rgba(238, 238, 238, 0.4);
-      color: rgba(255, 255, 255, 0.7);
+      background: rgba(238, 238, 238, 0.1);
+      color: rgba(255, 255, 255, 0.5);
     }
     &:hover {
       font-size: 18px;
-      height: 45px;
     }
     &--small {
       width: 30px;
